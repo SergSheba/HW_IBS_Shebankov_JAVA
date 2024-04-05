@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Апельсин",
+    "type": "FRUIT",
+    "exotic": true
+  },
+  {
+    "name": "Капуста",
+    "type": "VEGETABLE",
+    "exotic": false
+  },
+  {
+    "name": "Помидор",
+    "type": "VEGETABLE",
+    "exotic": false
+  },
+  {
+    "name": "Яблоко",
+    "type": "FRUIT",
+    "exotic": false
+  }
+]
