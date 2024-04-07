@@ -1,7 +1,8 @@
-package org.example;
+package org.example.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 public class PropertyLoader {
@@ -13,5 +14,10 @@ public class PropertyLoader {
         configuration.load(inputStream);
         inputStream.close();
         return configuration;
+    }
+    public static URL getUrl(String property) throws IOException {
+        Properties conf = PropertyLoader.loadProperties();
+        String propertyHost = conf.getProperty(property);
+        return new URL(propertyHost);
     }
 }

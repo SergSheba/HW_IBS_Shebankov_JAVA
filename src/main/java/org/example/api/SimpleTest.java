@@ -1,4 +1,4 @@
-package org.example;
+package org.example.api;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.http.entity.ContentType;
+import org.example.utils.PropertyLoader;
 import org.example.dto.Food;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
+
+import static org.example.utils.PropertyLoader.getUrl;
 
 public class SimpleTest {
     private final int POSITIVE_STATUS = 200;
@@ -66,9 +69,4 @@ public class SimpleTest {
         Assertions.assertEquals(POSITIVE_STATUS, response.statusCode(), "Статус не совпадает");
     }
 
-    public URL getUrl(String property) throws IOException {
-        Properties conf = PropertyLoader.loadProperties();
-        String propertyHost = conf.getProperty(property);
-        return new URL(propertyHost);
-    }
 }
