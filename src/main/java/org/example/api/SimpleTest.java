@@ -6,26 +6,29 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.http.entity.ContentType;
-import org.example.utils.PropertyLoader;
+
+
 import org.example.dto.Food;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Properties;
 
 import static org.example.utils.PropertyLoader.getUrl;
+
 
 public class SimpleTest {
     private final int POSITIVE_STATUS = 200;
     private final String FOOD_FROM_JSON_PATH = "src/main/resources/food.json";
 
+
     @Test
-    public void getFoodList() throws IOException, InterruptedException {
+    public void getFoodList() throws IOException {
         URL url = getUrl("host");
         Response response = RestAssured.given()
                 .contentType(String.valueOf(ContentType.APPLICATION_JSON))
@@ -59,7 +62,7 @@ public class SimpleTest {
 
 
     @Test
-    public void resetFoodList() throws IOException, InterruptedException {
+    public void resetFoodList() throws IOException {
         URL url = getUrl("hostReset");
         String body = "";
         Response response = RestAssured.given()
@@ -68,5 +71,7 @@ public class SimpleTest {
                 .post(url);
         Assertions.assertEquals(POSITIVE_STATUS, response.statusCode(), "Статус не совпадает");
     }
+
+
 
 }
